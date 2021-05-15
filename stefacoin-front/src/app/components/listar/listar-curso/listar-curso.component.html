@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Cursos</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let curso of cursos">
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nome }}</td>
+            <td>{{ curso.descricao }}</td>
+            <td>
+                <a class="btn btn-primary" [routerLink]="['/detalhar-curso', curso.id]">
+                    Detalhar 
+                </a>
+                <a class="btn btn-warning" [routerLink]="['/alterar-curso', curso.id]">
+                    Alterar
+                </a>
+                <button class="btn btn-danger" (click)="excluirCurso(curso.id)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

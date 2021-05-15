@@ -1,0 +1,16 @@
+<div class="alert alert-danger" *ngIf="campo?.invalid && (campo?.dirty || campo?.touched)">
+    <div *ngIf="campo?.errors?.required">
+        Campo obrigatório
+    </div>
+    <div *ngIf="campo?.errors?.minlength">
+        Mínimo de {{campo?.errors?.minlength?.requiredLength}} caracteres. Atualmente: {{campo?.value?.length}}
+        caracteres.
+    </div>
+    <div *ngIf="campo?.errors?.maxlength">
+        Máximo de {{campo?.errors?.maxlength?.requiredLength}} caracteres. Atualmente: {{campo?.value?.length}}
+        caracteres.
+    </div>
+    <div *ngIf="campo?.errors?.min">
+        Mínimo de {{campo?.errors?.min.min | currency: 'BRL'}}.
+    </div>
+</div>

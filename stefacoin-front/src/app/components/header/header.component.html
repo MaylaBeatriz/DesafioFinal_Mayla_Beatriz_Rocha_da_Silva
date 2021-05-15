@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="showHeader()">
+  <div class="container-fluid">
+    <a class="navbar-brand">SisHackathon</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link active" aria-current="page">Olá, Professor {{ usuario?.nome }}!</a>
+        </li>
+        <li class="nav-item" *ngIf="usuario?.tipo === 2">
+          <a class="nav-link">Olá, Aluno {{ usuario?.nome }}!</a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/listar-curso">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/listar-aluno">Alunos</a>
+        </li>
+        <li class="nav-item" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link active" aria-current="page" href="/cadastro-curso">Cadastrar Curso</a>
+        </li>
+        <li class="nav-item" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link active" aria-current="page" href="/cadastro-aluno">Cadastrar Aluno</a>
+        </li>
+        <li class="nav-item" *ngIf="usuario?.tipo === 1">
+          <a class="nav-link active" aria-current="page" href="/cadastro-professor">Cadastrar Professor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+

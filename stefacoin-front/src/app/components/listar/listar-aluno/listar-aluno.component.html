@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Alunos</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aluno of alunos">
+            <td>{{ aluno.id }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>
+                <a class="btn btn-warning" [routerLink]="['/alterar-aluno', aluno.id]">
+                    Alterar
+                </a>
+                <button class="btn btn-danger" (click)="excluirAluno(aluno.id)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

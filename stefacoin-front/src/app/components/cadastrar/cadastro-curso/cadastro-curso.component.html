@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Cadastro de Professor</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<form [formGroup]="cadastroForm">
+    <div class="w-50 p-2">
+        <input type="text" formControlName="nome" class="form-control" id="tx-nome" placeholder="Nome" />
+        <app-validacao [campo]="cadastroForm.get('nome')" name="'Nome'"></app-validacao>
+    </div>
+    <div class="w-50 p-2">
+        <input type="text" formControlName="descricao" class="form-control" id="tx-descricao" placeholder="Descrição" />
+        <app-validacao [campo]="cadastroForm.get('descricao')" name="'Descricao'"></app-validacao>
+    </div>
+
+    <div class="w-50 p-2">
+        <select formControlName="idProfessor">
+            <option value="" disabled>Selecione um professor</option>
+            <option *ngFor="let professor of professores" [ngValue]="professor">
+                {{ professor.nome }}
+            </option>
+        </select>
+        <app-validacao [campo]="cadastroForm.get('idProfessor')" name="'Professor'"></app-validacao>
+    </div>
+
+    <div formArrayName="aulas">
+        <div class="w-50 p-2" *ngFor="let aula of aulas.controls; let i = index">
+            <div [formGroupName]="i">
+                <div class="w-50 p-2">
+                    <input type="text" formControlName="nome" class="form-control" id="tx-nome" placeholder="Nome" />
+                    <app-validacao [campo]="cadastroForm.get('nome')" name="'Nome'"></app-validacao>
+                </div>
+                <div class="w-50 p-2">
+                    <input type="number" formControlName="duracao" class="form-control" id="tx-duracao" placeholder="Duração (horas)" />
+                    <app-validacao [campo]="cadastroForm.get('duracao')" name="'Duracao'"></app-validacao>
+                </div>
+                <div class="w-50 p-2">
+                    <input type="text" formControlName="topicos" class="form-control" id="tx-topicos" placeholder="Tópicos" />
+                    <app-validacao [campo]="cadastroForm.get('topicos')" name="'Topicos'"></app-validacao>
+                </div>
+                <button class="btn btn-danger mr-4 ml-2" (click)="removerAula(i)">Remover aula</button>
+            </div>
+        </div>
+    </div> 
+    <button class="btn btn-secondary mr-4 ml-2" (click)="adicionarAula()">Adicionar aula</button>
+
+    <button type="submit" class="btn btn-primary mr-4 ml-2" [disabled]="!cadastroForm.valid"
+        (click)="cadastrarCurso()">Cadastrar
+    </button>
+</form>

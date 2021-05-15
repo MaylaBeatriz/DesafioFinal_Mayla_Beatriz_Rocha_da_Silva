@@ -1,0 +1,2 @@
+<div [ngClass]="{'alert-success': mensagem?.sucesso, 'alert-danger': !mensagem?.sucesso}" class="alert " 
+*ngIf="mensagem?.mensagem">{{mensagem?.mensagem}}</div>

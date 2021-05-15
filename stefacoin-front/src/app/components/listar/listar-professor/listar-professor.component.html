@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Professores</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let professor of professores">
+            <td>{{ professor.id }}</td>
+            <td>{{ professor.nome }}</td>
+            <td>{{ professor.email }}</td>
+            <td>
+                <a [routerLink]="['/detalhar-curso', professor.id]" class="btn btn-primary">
+                    Cursos
+                </a>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="excluirProfessor(professor.id)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

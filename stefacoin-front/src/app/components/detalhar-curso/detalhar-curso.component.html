@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Curso {{curso?.nome}}</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<div>
+    {{curso?.descricao}}
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Aulas</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Tópicos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aula of curso?.aulas">
+            <td>{{ aula.nome }}</td>
+            <td>{{ aula.duracao }} horas</td>
+            <td>{{ aula.topicos }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+<div class="box">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="mb-5">
+      <h1 class="font-italic, font-weight-light">SisHackathon</h1>
+    </div>
+    <div class="mb-3">
+      <input type="email" formControlName="email" class="form-control" id="tx-email" placeholder="E-mail" />
+    </div>
+    <div class="mb-3">
+      <input type="password" formControlName="senha" class="form-control" id="pwd-senha" placeholder="Senha" />
+    </div>
+    <button type="submit" class="btn btn-primary mr-5">Login</button>
+    <a href="/cadastro-professor" class="btn btn-outline-primary">Cadastrar Professor</a>
+    <a href="/cadastro-aluno" class="btn btn-outline-primary">Cadastrar Aluno</a>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">Cadastro de Professor</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<app-alerta [mensagem]="mensagem"></app-alerta>
+
+<form [formGroup]="cadastroForm">
+    <div class="w-50 p-2">
+        <input type="text" formControlName="nome" class="form-control" id="tx-nome" placeholder="Nome" />
+        <app-validacao [campo]="cadastroForm.get('nome')" name="'Nome'"></app-validacao>
+    </div>
+    <div class="w-50 p-2">
+        <input type="email" formControlName="email" class="form-control" id="tx-email" placeholder="E-mail" />
+        <app-validacao [campo]="cadastroForm.get('email')" name="'Email'"></app-validacao>
+    </div>
+    <div class="w-50 p-2">
+        <input type="password" formControlName="senha" class="form-control" id="pwd-senha" placeholder="Senha" />
+        <app-validacao [campo]="cadastroForm.get('senha')" name="'Senha'"></app-validacao>
+    </div>
+    <button type="submit" class="btn btn-primary mr-4 ml-2" [disabled]="!cadastroForm.valid" (click)="cadastrarProfessor()">
+        Cadastrar
+    </button>
+</form>
